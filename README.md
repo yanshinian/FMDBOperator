@@ -75,8 +75,7 @@ var cacheTime: Double = 0.0 {
     }
 }
 ```
-判断缓存是否过期并更新缓存时间。假如：你有几条信息。设置的`cacheTime`是`90s`。那么，过期之后把表中的数据可以通过 `remove()`干掉。然后从网络从新更新。然后再更新缓存时间。下一次就用缓存中的数据了。
-
+判断缓存是否过期并更新缓存时间。
 
 ```
 var isExpired:Bool {
@@ -97,6 +96,30 @@ var isExpired:Bool {
 }
 ```
 
+例子：你有几条信息。设置的`cacheTime`是`90s`。那么，过期之后把表中的数据可以通过 `remove()`干掉。然后从网络从新更新。然后再更新缓存时间。下一次就用缓存中的数据了。
+
+```
+// 然后开始遍历
+let banner = Banner()
+// 过期后 删除缓存 重新缓存
+if (banner.isExpired) {
+    print("过期了请更新")
+    banner.remove()
+     print("banner 取自于 网络")
+    for dict in arr {
+        let banner = Banner(dict: dict)
+        bannerList.append(banner)
+        banner.insert()
+    }
+} else {
+    print("banner 取自于 缓存")
+    let arr = banner.find() as! [[String: AnyObject]]
+    for dict in arr {
+        let banner = Banner(dict: dict)
+        bannerList.append(banner)
+    }
+}
+```
 
 ##示例：
 
