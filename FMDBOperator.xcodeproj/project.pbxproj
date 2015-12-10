@@ -7,9 +7,17 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		815043A91C19500100D29043 /* FMDBOperator.swift in Sources */ = {isa = PBXBuildFile; fileRef = 815043A81C19500100D29043 /* FMDBOperator.swift */; };
+		815043AC1C19500700D29043 /* Student.swift in Sources */ = {isa = PBXBuildFile; fileRef = 815043AB1C19500700D29043 /* Student.swift */; };
+		815043AE1C19512B00D29043 /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 815043AD1C19512B00D29043 /* Main.storyboard */; };
+		815043B01C19515300D29043 /* libsqlite3.0.tbd in Frameworks */ = {isa = PBXBuildFile; fileRef = 815043AF1C19515200D29043 /* libsqlite3.0.tbd */; };
+		815043BD1C19516800D29043 /* FMDatabase.m in Sources */ = {isa = PBXBuildFile; fileRef = 815043B31C19516800D29043 /* FMDatabase.m */; };
+		815043BE1C19516800D29043 /* FMDatabaseAdditions.m in Sources */ = {isa = PBXBuildFile; fileRef = 815043B51C19516800D29043 /* FMDatabaseAdditions.m */; };
+		815043BF1C19516800D29043 /* FMDatabasePool.m in Sources */ = {isa = PBXBuildFile; fileRef = 815043B71C19516800D29043 /* FMDatabasePool.m */; };
+		815043C01C19516800D29043 /* FMDatabaseQueue.m in Sources */ = {isa = PBXBuildFile; fileRef = 815043B91C19516800D29043 /* FMDatabaseQueue.m */; };
+		815043C11C19516800D29043 /* FMResultSet.m in Sources */ = {isa = PBXBuildFile; fileRef = 815043BC1C19516800D29043 /* FMResultSet.m */; };
 		81D4E9941C16D46000EBFDB1 /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 81D4E9931C16D46000EBFDB1 /* AppDelegate.swift */; };
 		81D4E9961C16D46000EBFDB1 /* ViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 81D4E9951C16D46000EBFDB1 /* ViewController.swift */; };
-		81D4E9991C16D46000EBFDB1 /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 81D4E9971C16D46000EBFDB1 /* Main.storyboard */; };
 		81D4E99B1C16D46100EBFDB1 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 81D4E99A1C16D46100EBFDB1 /* Assets.xcassets */; };
 		81D4E99E1C16D46100EBFDB1 /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 81D4E99C1C16D46100EBFDB1 /* LaunchScreen.storyboard */; };
 		81D4E9A91C16D46300EBFDB1 /* FMDBOperatorTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 81D4E9A81C16D46300EBFDB1 /* FMDBOperatorTests.swift */; };
@@ -34,10 +42,25 @@
 /* End PBXContainerItemProxy section */
 
 /* Begin PBXFileReference section */
+		815043A81C19500100D29043 /* FMDBOperator.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = FMDBOperator.swift; path = ../FMDBOperator.swift; sourceTree = "<group>"; };
+		815043AB1C19500700D29043 /* Student.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Student.swift; sourceTree = "<group>"; };
+		815043AD1C19512B00D29043 /* Main.storyboard */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.storyboard; path = Main.storyboard; sourceTree = "<group>"; };
+		815043AF1C19515200D29043 /* libsqlite3.0.tbd */ = {isa = PBXFileReference; lastKnownFileType = "sourcecode.text-based-dylib-definition"; name = libsqlite3.0.tbd; path = usr/lib/libsqlite3.0.tbd; sourceTree = SDKROOT; };
+		815043B21C19516800D29043 /* FMDatabase.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = FMDatabase.h; sourceTree = "<group>"; };
+		815043B31C19516800D29043 /* FMDatabase.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = FMDatabase.m; sourceTree = "<group>"; };
+		815043B41C19516800D29043 /* FMDatabaseAdditions.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = FMDatabaseAdditions.h; sourceTree = "<group>"; };
+		815043B51C19516800D29043 /* FMDatabaseAdditions.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = FMDatabaseAdditions.m; sourceTree = "<group>"; };
+		815043B61C19516800D29043 /* FMDatabasePool.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = FMDatabasePool.h; sourceTree = "<group>"; };
+		815043B71C19516800D29043 /* FMDatabasePool.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = FMDatabasePool.m; sourceTree = "<group>"; };
+		815043B81C19516800D29043 /* FMDatabaseQueue.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = FMDatabaseQueue.h; sourceTree = "<group>"; };
+		815043B91C19516800D29043 /* FMDatabaseQueue.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = FMDatabaseQueue.m; sourceTree = "<group>"; };
+		815043BA1C19516800D29043 /* FMDB.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = FMDB.h; sourceTree = "<group>"; };
+		815043BB1C19516800D29043 /* FMResultSet.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = FMResultSet.h; sourceTree = "<group>"; };
+		815043BC1C19516800D29043 /* FMResultSet.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = FMResultSet.m; sourceTree = "<group>"; };
+		815043C51C1951B700D29043 /* FMDBOperator-Bridging-Header.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = "FMDBOperator-Bridging-Header.h"; sourceTree = "<group>"; };
 		81D4E9901C16D45F00EBFDB1 /* FMDBOperator.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = FMDBOperator.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		81D4E9931C16D46000EBFDB1 /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
 		81D4E9951C16D46000EBFDB1 /* ViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ViewController.swift; sourceTree = "<group>"; };
-		81D4E9981C16D46000EBFDB1 /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/Main.storyboard; sourceTree = "<group>"; };
 		81D4E99A1C16D46100EBFDB1 /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
 		81D4E99D1C16D46100EBFDB1 /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/LaunchScreen.storyboard; sourceTree = "<group>"; };
 		81D4E99F1C16D46100EBFDB1 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
@@ -54,6 +77,7 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				815043B01C19515300D29043 /* libsqlite3.0.tbd in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -74,9 +98,37 @@
 /* End PBXFrameworksBuildPhase section */
 
 /* Begin PBXGroup section */
+		815043AA1C19500700D29043 /* Example */ = {
+			isa = PBXGroup;
+			children = (
+				815043AB1C19500700D29043 /* Student.swift */,
+				815043A81C19500100D29043 /* FMDBOperator.swift */,
+			);
+			path = Example;
+			sourceTree = "<group>";
+		};
+		815043B11C19516800D29043 /* fmdb */ = {
+			isa = PBXGroup;
+			children = (
+				815043B21C19516800D29043 /* FMDatabase.h */,
+				815043B31C19516800D29043 /* FMDatabase.m */,
+				815043B41C19516800D29043 /* FMDatabaseAdditions.h */,
+				815043B51C19516800D29043 /* FMDatabaseAdditions.m */,
+				815043B61C19516800D29043 /* FMDatabasePool.h */,
+				815043B71C19516800D29043 /* FMDatabasePool.m */,
+				815043B81C19516800D29043 /* FMDatabaseQueue.h */,
+				815043B91C19516800D29043 /* FMDatabaseQueue.m */,
+				815043BA1C19516800D29043 /* FMDB.h */,
+				815043BB1C19516800D29043 /* FMResultSet.h */,
+				815043BC1C19516800D29043 /* FMResultSet.m */,
+			);
+			path = fmdb;
+			sourceTree = "<group>";
+		};
 		81D4E9871C16D45F00EBFDB1 = {
 			isa = PBXGroup;
 			children = (
+				815043AF1C19515200D29043 /* libsqlite3.0.tbd */,
 				81D4E9921C16D46000EBFDB1 /* FMDBOperator */,
 				81D4E9A71C16D46300EBFDB1 /* FMDBOperatorTests */,
 				81D4E9B21C16D46400EBFDB1 /* FMDBOperatorUITests */,
@@ -97,12 +149,15 @@
 		81D4E9921C16D46000EBFDB1 /* FMDBOperator */ = {
 			isa = PBXGroup;
 			children = (
+				815043AA1C19500700D29043 /* Example */,
 				81D4E9931C16D46000EBFDB1 /* AppDelegate.swift */,
 				81D4E9951C16D46000EBFDB1 /* ViewController.swift */,
-				81D4E9971C16D46000EBFDB1 /* Main.storyboard */,
+				815043C51C1951B700D29043 /* FMDBOperator-Bridging-Header.h */,
+				815043AD1C19512B00D29043 /* Main.storyboard */,
 				81D4E99A1C16D46100EBFDB1 /* Assets.xcassets */,
 				81D4E99C1C16D46100EBFDB1 /* LaunchScreen.storyboard */,
 				81D4E99F1C16D46100EBFDB1 /* Info.plist */,
+				815043B11C19516800D29043 /* fmdb */,
 			);
 			path = FMDBOperator;
 			sourceTree = "<group>";
@@ -229,9 +284,9 @@
 			isa = PBXResourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				815043AE1C19512B00D29043 /* Main.storyboard in Resources */,
 				81D4E99E1C16D46100EBFDB1 /* LaunchScreen.storyboard in Resources */,
 				81D4E99B1C16D46100EBFDB1 /* Assets.xcassets in Resources */,
-				81D4E9991C16D46000EBFDB1 /* Main.storyboard in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -257,7 +312,14 @@
 			buildActionMask = 2147483647;
 			files = (
 				81D4E9961C16D46000EBFDB1 /* ViewController.swift in Sources */,
+				815043C01C19516800D29043 /* FMDatabaseQueue.m in Sources */,
+				815043A91C19500100D29043 /* FMDBOperator.swift in Sources */,
 				81D4E9941C16D46000EBFDB1 /* AppDelegate.swift in Sources */,
+				815043BD1C19516800D29043 /* FMDatabase.m in Sources */,
+				815043BF1C19516800D29043 /* FMDatabasePool.m in Sources */,
+				815043C11C19516800D29043 /* FMResultSet.m in Sources */,
+				815043AC1C19500700D29043 /* Student.swift in Sources */,
+				815043BE1C19516800D29043 /* FMDatabaseAdditions.m in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -293,14 +355,6 @@
 /* End PBXTargetDependency section */
 
 /* Begin PBXVariantGroup section */
-		81D4E9971C16D46000EBFDB1 /* Main.storyboard */ = {
-			isa = PBXVariantGroup;
-			children = (
-				81D4E9981C16D46000EBFDB1 /* Base */,
-			);
-			name = Main.storyboard;
-			sourceTree = "<group>";
-		};
 		81D4E99C1C16D46100EBFDB1 /* LaunchScreen.storyboard */ = {
 			isa = PBXVariantGroup;
 			children = (
@@ -401,6 +455,7 @@
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
 				PRODUCT_BUNDLE_IDENTIFIER = com.yanshinian.yanshinian.FMDBOperator;
 				PRODUCT_NAME = "$(TARGET_NAME)";
+				SWIFT_OBJC_BRIDGING_HEADER = "FMDBOperator/FMDBOperator-Bridging-Header.h";
 			};
 			name = Debug;
 		};
@@ -412,6 +467,7 @@
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
 				PRODUCT_BUNDLE_IDENTIFIER = com.yanshinian.yanshinian.FMDBOperator;
 				PRODUCT_NAME = "$(TARGET_NAME)";
+				SWIFT_OBJC_BRIDGING_HEADER = "FMDBOperator/FMDBOperator-Bridging-Header.h";
 			};
 			name = Release;
 		};
@@ -482,6 +538,7 @@
 				81D4E9BA1C16D46400EBFDB1 /* Release */,
 			);
 			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
 		};
 		81D4E9BB1C16D46400EBFDB1 /* Build configuration list for PBXNativeTarget "FMDBOperatorTests" */ = {
 			isa = XCConfigurationList;
@@ -490,6 +547,7 @@
 				81D4E9BD1C16D46400EBFDB1 /* Release */,
 			);
 			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
 		};
 		81D4E9BE1C16D46400EBFDB1 /* Build configuration list for PBXNativeTarget "FMDBOperatorUITests" */ = {
 			isa = XCConfigurationList;
@@ -498,6 +556,7 @@
 				81D4E9C01C16D46400EBFDB1 /* Release */,
 			);
 			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
 		};
 /* End XCConfigurationList section */
 	};
