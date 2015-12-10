@@ -20,14 +20,11 @@ class FMDBOperator : NSObject {
         didSet {
             if cacheTime > 0.0 {
                 let cTime = getCacheTime()
-                print("缓存的是时间\(cTime)")
                 if let _ = cTime {
-                    print("断了")
                     return
                 }
                 // 計算
                 let timeStamp = NSDate().timeIntervalSince1970 + cacheTime
-                print("timeStamp:--\(timeStamp)")
                 print("表格：\(self.classForCoder),緩存時間：\(self.cacheTime)")
                 let sql = "INSERT INTO  Cache (table_name, last_time) VALUES ('\(tableName!)',\(timeStamp))"
                 db.executeUpdate(sql, withArgumentsInArray: nil)
