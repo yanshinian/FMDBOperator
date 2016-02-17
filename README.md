@@ -1,7 +1,12 @@
 # FMDBOperator
+
 简单的封装了一下FMDB，支持链式操作，继承，更加面向对象的操作！支持缓存时间设置！
 
 其实写的比较简陋，还需要合理的完善！目前，应用是足够了！
+
+之前是继承使用！我感觉继承使用耦合度还是有的！所以加了一个NSObject分类——`DBManager`。这样不用继承就直接使用了。
+
+
 
 ##特征：
 
@@ -69,8 +74,9 @@ var cacheTime: Double = 0.0 {
             }
             // 計算
             let timeStamp = NSDate().timeIntervalSince1970 + cacheTime
-            let sql = "INSERT INTO  Cache (table_name, last_time) VALUES ('\(tableName!)',\(timeStamp))"
-            db.executeUpdate(sql, withArgumentsInArray: nil)
+            print("表格：\(self.classForCoder),緩存時間：\(self.cacheTime)")
+            let sql = "INSERT INTO  Cache (table_name, last_time) VALUES ('\(f_tableName!)',\(timeStamp))"
+            db!.executeUpdate(sql, withArgumentsInArray: nil)
         }
     }
 }
@@ -88,7 +94,8 @@ var isExpired:Bool {
         let currentTime =  NSDate().timeIntervalSince1970
         // 如果 过期 更新缓存表信息
         if currentTime > c {
-            self.table("Cache").condition("table_name='\(tableName!)'").save(["last_time": currentTime + cacheTime])
+            self.f_table("Cache").f_condition("table_name='\(f_tableName!)'").f_save(["last_time": currentTime + cacheTime])
+            print("当前时间是\(currentTime)--数据库时间\(c)")
         }
         return currentTime > c
     }
@@ -126,7 +133,7 @@ if (banner.isExpired) {
 声明一个`Student`类继承`FMDBOperator`
 
 ```
-class Student: FMDBOperator {
+class Student: NSObject {
     var name: String?
     var age: Int = 0
     var birthDay: String?
@@ -134,9 +141,7 @@ class Student: FMDBOperator {
     override init() {
         super.init()
         tableName = "Student"
-    }
-    override func returnCreateTableSentence() -> String {
-        return "CREATE TABLE IF NOT EXISTS Student (sid integer primary key AutoIncrement,name varchar(20),age varchar(20), birthDay varchar(20))"
+        createTableSql = "CREATE TABLE IF NOT EXISTS Student (sid integer primary key AutoIncrement,name varchar(20),age varchar(20), birthDay varchar(20))"
     }
 }
 ```
@@ -203,7 +208,6 @@ student.find() as! [[String: AnyObject]]
 
 ### 其他操作方式
 
-比如：我声明了一个其他的类。只要它继承自`FMDBOperator`。就会操作任意的表。
 
 ```
 // 查询 表 Student 中所有 age 为 2的小朋友

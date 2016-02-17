@@ -250,29 +250,12 @@ class FMDBOperator: NSObject {
                 sql += "WHERE \(value)"
             }
         }
-        //        print("+++++++++")
-        //        dump(sql)
-        //        print("+++++++++")
         return sql
     }
     // MARK: - 创建表格
     func f_createTable(createTableStr: String) {
         db!.executeUpdate(createTableStr, withArgumentsInArray: nil)
     }
-    //    func createTable() {
-    //        // 如果没有指定 returnTableName 根据 反射之后知道的类型去创建一张表（根据属性去创建一张默认的表）
-    //        let mirror: Mirror = Mirror(reflecting:self)
-    //        for p in mirror.children {
-    //            let propertyNameString = p.label!
-    //            let v = p.value
-    //            print(v)
-    //            let propertyMirrorType: Mirror = Mirror(reflecting:v)
-    //            print(propertyMirrorType.subjectType)
-    //            let typeName = "\(propertyMirrorType.subjectType)".trimOptional()
-    //            let vend = "\(v)".trimOptional()
-    //        }
-    ////        db.executeUpdate(returnCreateTableSentence()!, withArgumentsInArray: nil)
-    //    }
     // MARK: - 获取表中的所有字段 信息 -
     func getFields() -> [[String: [String: AnyObject]]]{
         options["TABLE"] =   (options["TABLE"] != nil) ? options["TABLE"] : f_tableName!
