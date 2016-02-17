@@ -7,10 +7,11 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		04626DFB1C7461E40024FC36 /* DBManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = 04626DFA1C7461E40024FC36 /* DBManager.swift */; };
+		04626DFD1C7462220024FC36 /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 04626DFC1C7462220024FC36 /* Main.storyboard */; };
 		5428B3565FD4BFC4F7380A87 /* libPods.a in Frameworks */ = {isa = PBXBuildFile; fileRef = 1AD9EFBFB0E62CD617C18FF3 /* libPods.a */; };
 		815043A91C19500100D29043 /* FMDBOperator.swift in Sources */ = {isa = PBXBuildFile; fileRef = 815043A81C19500100D29043 /* FMDBOperator.swift */; };
 		815043AC1C19500700D29043 /* Student.swift in Sources */ = {isa = PBXBuildFile; fileRef = 815043AB1C19500700D29043 /* Student.swift */; };
-		815043AE1C19512B00D29043 /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 815043AD1C19512B00D29043 /* Main.storyboard */; };
 		815043B01C19515300D29043 /* libsqlite3.0.tbd in Frameworks */ = {isa = PBXBuildFile; fileRef = 815043AF1C19515200D29043 /* libsqlite3.0.tbd */; };
 		81D4E9941C16D46000EBFDB1 /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 81D4E9931C16D46000EBFDB1 /* AppDelegate.swift */; };
 		81D4E9961C16D46000EBFDB1 /* ViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 81D4E9951C16D46000EBFDB1 /* ViewController.swift */; };
@@ -38,12 +39,13 @@
 /* End PBXContainerItemProxy section */
 
 /* Begin PBXFileReference section */
+		04626DFA1C7461E40024FC36 /* DBManager.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = DBManager.swift; sourceTree = "<group>"; };
+		04626DFC1C7462220024FC36 /* Main.storyboard */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.storyboard; path = Main.storyboard; sourceTree = "<group>"; };
 		0C31A22CC044F91E312D7AF3 /* Pods.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = Pods.debug.xcconfig; path = "Pods/Target Support Files/Pods/Pods.debug.xcconfig"; sourceTree = "<group>"; };
 		11B1E4A7F7DB83355A724677 /* Pods.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = Pods.release.xcconfig; path = "Pods/Target Support Files/Pods/Pods.release.xcconfig"; sourceTree = "<group>"; };
 		1AD9EFBFB0E62CD617C18FF3 /* libPods.a */ = {isa = PBXFileReference; explicitFileType = archive.ar; includeInIndex = 0; path = libPods.a; sourceTree = BUILT_PRODUCTS_DIR; };
 		815043A81C19500100D29043 /* FMDBOperator.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = FMDBOperator.swift; path = ../FMDBOperator.swift; sourceTree = "<group>"; };
 		815043AB1C19500700D29043 /* Student.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Student.swift; sourceTree = "<group>"; };
-		815043AD1C19512B00D29043 /* Main.storyboard */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.storyboard; path = Main.storyboard; sourceTree = "<group>"; };
 		815043AF1C19515200D29043 /* libsqlite3.0.tbd */ = {isa = PBXFileReference; lastKnownFileType = "sourcecode.text-based-dylib-definition"; name = libsqlite3.0.tbd; path = usr/lib/libsqlite3.0.tbd; sourceTree = SDKROOT; };
 		815043C51C1951B700D29043 /* FMDBOperator-Bridging-Header.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = "FMDBOperator-Bridging-Header.h"; sourceTree = "<group>"; };
 		81D4E9901C16D45F00EBFDB1 /* FMDBOperator.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = FMDBOperator.app; sourceTree = BUILT_PRODUCTS_DIR; };
@@ -101,6 +103,7 @@
 			children = (
 				815043AB1C19500700D29043 /* Student.swift */,
 				815043A81C19500100D29043 /* FMDBOperator.swift */,
+				04626DFA1C7461E40024FC36 /* DBManager.swift */,
 			);
 			path = Example;
 			sourceTree = "<group>";
@@ -143,7 +146,7 @@
 				81D4E9931C16D46000EBFDB1 /* AppDelegate.swift */,
 				81D4E9951C16D46000EBFDB1 /* ViewController.swift */,
 				815043C51C1951B700D29043 /* FMDBOperator-Bridging-Header.h */,
-				815043AD1C19512B00D29043 /* Main.storyboard */,
+				04626DFC1C7462220024FC36 /* Main.storyboard */,
 				81D4E99A1C16D46100EBFDB1 /* Assets.xcassets */,
 				81D4E99C1C16D46100EBFDB1 /* LaunchScreen.storyboard */,
 				81D4E99F1C16D46100EBFDB1 /* Info.plist */,
@@ -276,7 +279,7 @@
 			isa = PBXResourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				815043AE1C19512B00D29043 /* Main.storyboard in Resources */,
+				04626DFD1C7462220024FC36 /* Main.storyboard in Resources */,
 				81D4E99E1C16D46100EBFDB1 /* LaunchScreen.storyboard in Resources */,
 				81D4E99B1C16D46100EBFDB1 /* Assets.xcassets in Resources */,
 			);
@@ -351,6 +354,7 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				04626DFB1C7461E40024FC36 /* DBManager.swift in Sources */,
 				81D4E9961C16D46000EBFDB1 /* ViewController.swift in Sources */,
 				815043A91C19500100D29043 /* FMDBOperator.swift in Sources */,
 				81D4E9941C16D46000EBFDB1 /* AppDelegate.swift in Sources */,

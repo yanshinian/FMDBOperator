@@ -20,19 +20,19 @@ class ViewController: UIViewController {
         super.didReceiveMemoryWarning()
         // Dispose of any resources that can be recreated.
     }
-    @IBAction func add(sender: AnyObject) {
+    @IBAction func addAction(sender: AnyObject) {
         student.name = "野原新之助"
         student.age = 5
-        student.birthDay = "7月22日"
+        student.birthDay = "7月12日"
         student.insert()
     }
-    @IBAction func remove(sender: AnyObject) {
+    @IBAction func removeAction(sender: AnyObject) {
         student.remove()
     }
-    @IBAction func save(sender: AnyObject) {
+    @IBAction func saveAction(sender: AnyObject) {
         student.condition("name='野原新之助'").save(["birthDay": "7.22"])
     }
-    @IBAction func find(sender: AnyObject) {
+    @IBAction func findAction(sender: AnyObject) {
         let arr = student.find() as! [[String: AnyObject]]
         dump(arr)
     }
