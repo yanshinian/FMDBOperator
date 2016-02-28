@@ -13,6 +13,7 @@ extension NSObject {
         static var tableNameKey = "tableNameKey"
         static var createTableSqlKey = "createTableSqlKey"
     }
+    // 绑定一个属性，用于建表使用
     var createTableSql: String? {
         get {
             return objc_getAssociatedObject(self, &AssociatedKeys.createTableSqlKey) as? String
@@ -23,6 +24,7 @@ extension NSObject {
             }
         }
     }
+    // 绑定一个属性，传递表名
     var tableName: String? {
         get {
             return objc_getAssociatedObject(self, &AssociatedKeys.tableNameKey) as? String
@@ -33,6 +35,7 @@ extension NSObject {
             }
         }
     }
+    // 实例化 FMDBOperator
     var dbOperator: FMDBOperator {
         let db = FMDBOperator.sharedInstance
         db.f_tableName = tableName
