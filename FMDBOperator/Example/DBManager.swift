@@ -42,24 +42,21 @@ extension NSObject {
         db.f_createTable(createTableSql!)
         return db
     }
-    func insert(any:AnyObject? = nil) -> NSObject {
+    func insert(any:AnyObject? = nil) -> Bool {
         if let a = any {
-            dbOperator.f_insert(a)
+            return dbOperator.f_insert(a)
         } else {
-            dbOperator.f_insert(self)
+            return dbOperator.f_insert(self)
         }
-        return self
     }
-    func remove(id: Int? = nil) {
-        dbOperator.f_remove(id)
+    func remove(id: Int? = nil) -> Bool {
+        return dbOperator.f_remove(id)
     }
-    func save(dict:[String: AnyObject]) -> NSObject {
-        dbOperator.f_save(dict)
-        return self
+    func save(dict:[String: AnyObject]) -> Bool {
+        return dbOperator.f_save(dict)
     }
-    func find(items: Int? = nil) -> NSObject {
-        dbOperator.f_find(items)
-        return self
+    func find(items: Int? = nil) -> AnyObject? {
+        return dbOperator.f_find(items)
     }
     func condition(whereStr: String) -> NSObject {
         dbOperator.f_condition(whereStr)
