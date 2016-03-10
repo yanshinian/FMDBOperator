@@ -10,6 +10,7 @@ import UIKit
 
 private let dbName = "app.db"
 class FMDBOperator: NSObject {
+    // 缓存 时间
     var cacheTime: Double = 0.0 {
         didSet {
             if cacheTime > 0.0 {
@@ -25,6 +26,7 @@ class FMDBOperator: NSObject {
             }
         }
     }
+    // 是否 缓存 过期
     var isExpired:Bool {
         // 查詢出 緩存的時間
         let cTime = getCacheTime()
@@ -42,10 +44,15 @@ class FMDBOperator: NSObject {
         }
         return true
     }
+    // 表名称
     var f_tableName: String?
+    // 操作 数组
     lazy var options:[String: String] = [String: String]()
+    // 单例
     static let sharedInstance = FMDBOperator()
+    // Fmdb
     let db: FMDatabase?
+    // 查询的 querySql 语句
     var querySql: String?
     override init() {
         var path = NSSearchPathForDirectoriesInDomains(.DocumentDirectory, .UserDomainMask, true).last!
@@ -87,14 +94,12 @@ class FMDBOperator: NSObject {
             }
             sql += "\(filed.subStringWithOutTail(1))) VALUES (\(value.subStringWithOutTail(1)));"
         } else {
-            let fields = getFields()
             var filed = ""
             var value = ""
             let mirror: Mirror = Mirror(reflecting:any as! NSObject)
             for p in mirror.children {
                 
                 // 如果不是 表中的字段就跳過
-                print("]\(p.label!)]")
                 if !checkField(p.label!) {
                     continue
                 }
@@ -102,11 +107,8 @@ class FMDBOperator: NSObject {
                     continue ;
                 }
                 filed += "\(p.label!),"
-                print("000\(filed)")
-                //                let propertyNameString = p.label!
                 let v = p.value
                 let propertyMirrorType: Mirror = Mirror(reflecting:v)
-                print(propertyMirrorType.subjectType)
                 let typeName = "\(propertyMirrorType.subjectType)".trimOptional()
                 let vend = "\(v)".trimOptional()
                 if typeName == "String" {
@@ -119,13 +121,18 @@ class FMDBOperator: NSObject {
         }
         options.removeAll()
         if db!.executeUpdate(sql, withArgumentsInArray: nil) {
-            print("插入成功")
             return true
         } else {
-            print("插入失败")
             return false
         }
     }
+    /**
+     更新数据库的操作
+     
+     - parameter dict: 字典，字段 为 key，["name": '翠花']
+     
+     - returns: 返回 操作 结果
+     */
     func f_save(dict:[String: AnyObject])->Bool {
         options["UPDATE"] = ""
         //        UPDATE table_name
@@ -158,6 +165,14 @@ class FMDBOperator: NSObject {
             return false
         }
     }
+    // MARK: 查询操作
+    /**
+    查询数据库的操作
+    
+    - parameter items: 可以填写id查询
+    
+    - returns: 返回查询结果集，数组 或者 根据 id 查找到的 一条数据
+    */
     func f_find(items: Int? = nil) -> AnyObject? {
         if let i = items {
             options["SELECT"] = "\(i)"
@@ -165,23 +180,19 @@ class FMDBOperator: NSObject {
             options["SELECT"] = ""
         }
         let sql = parseSql()
-        
-        print("find---parseSql")
-        print(sql)
         if let _ = items {
             // 通过主键查询
             return fetchRow(db!.executeQuery(sql, withArgumentsInArray: nil)) as? AnyObject
         } else {
-            //            print("结果怎么了：")
-            //            dump( fetchAll(db.executeQuery(sql, withArgumentsInArray: nil)) as? AnyObject)
             return fetchAll(db!.executeQuery(sql, withArgumentsInArray: nil)) as? AnyObject
         }
-        return nil
     }
+    // MARK: 选择查询的 表
     func f_table(name: String) -> FMDBOperator{
         options["TABLE"] = name
         return self
     }
+    // MARK: 条件查询
     func f_condition(whereStr: String)-> FMDBOperator {
         options["WHERE"] = whereStr
         return self
@@ -216,15 +227,14 @@ class FMDBOperator: NSObject {
     func f_limit(offset: Int, length: Int? = nil ) -> FMDBOperator{
         //        options!["LIMIT"] =
         if let l = length {
-            if let q = querySql {
+            if let _ = querySql {
                 querySql! += " LIMIT \(offset)  OFFSET \(l)"
             }
         } else {
-            if let q = querySql {
+            if let _ = querySql {
                 querySql! += " LIMIT \(offset)"
             }
         }
-        
         return self
     }
     // Mark: - 解析Sql 語句-
@@ -266,7 +276,6 @@ class FMDBOperator: NSObject {
         while set.next() {
             var fieldDict = [String:  AnyObject]()
             fieldDict["name"] = set.objectForColumnName("name")
-            
             fieldDict["type"] = set.objectForColumnName("type")
             fieldDict["pk"] = set.objectForColumnName("pk")
             fieldDict["dflt_value"] = set.objectForColumnName("dflt_value")
@@ -276,15 +285,12 @@ class FMDBOperator: NSObject {
         assert(fieldsArr.count != 0, "表格没有被创建好")
         return fieldsArr
     }
+    // MARK: 获取表中的主键
     func getPk() -> String? {
-        //        [[pid: [name: pid, dflt_value: <null>, pk: 1, notnull: 0, type: integer]], [name: [name: name, dflt_value: <null>, pk: 0, notnull: 0, type: varchar(20)]], [age: [name: age, dflt_value: <null>, pk: 0, notnull: 0, type: varchar(20)]]]
-        
+        //  示例：       [[pid: [name: pid, dflt_value: <null>, pk: 1, notnull: 0, type: integer]], [name: [name: name, dflt_value: <null>, pk: 0, notnull: 0, type: varchar(20)]], [age: [name: age, dflt_value: <null>, pk: 0, notnull: 0, type: varchar(20)]]]
         let fields = getFields()
         for f:[String:  AnyObject] in fields {
-            //            [pid: [name: pid, dflt_value: <null>, pk: 1, notnull: 0, type: integer]]
-            print(f.first!)
-            let e = f.first
-            print(e!.1)
+            //  示例： [pid: [name: pid, dflt_value: <null>, pk: 1, notnull: 0, type: integer]]
             let dict = f.first!.1
             if dict["pk"] as! Int == 1 {
                 return dict["name"] as? String
@@ -320,7 +326,6 @@ class FMDBOperator: NSObject {
         var resultArr = [[String: AnyObject]]()
         while set.next() {
             var fieldDict = [String:  AnyObject]()
-            
             for f:[String:  AnyObject] in fields {
                 let dict = f.first!.1
                 fieldDict[dict["name"] as! String] = set.objectForColumnName(dict["name"] as! String)
@@ -352,12 +357,19 @@ class FMDBOperator: NSObject {
             return resultArr[0]
         }
         return nil
-        
     }
     func createCacheTable() {
         let sql = "CREATE TABLE IF NOT EXISTS Cache (cache_id integer primary key AutoIncrement,table_name varchar(20),last_time REAL)"
         db!.executeUpdate(sql, withArgumentsInArray: nil)
     }
+    // MARK:  获取缓存的时间
+    /**
+    获取缓存时间
+    
+    - parameter name: 表明
+    
+    - returns: 返回 具体的时间，如果没有 返回 nil
+    */
     func getCacheTime(name: String = "") -> Double? {
         var tbName: String?
         if name == "" {
@@ -373,22 +385,21 @@ class FMDBOperator: NSObject {
         }
     }
     deinit {
+        // 关闭 数据库 的链接
         db!.close()
     }
     
 }
 extension String {
     func subStringWithOutTail(count: Int) -> String {
-        print(self)
-        print("self.characters.count-\(self.characters.count)")
         return (self as NSString).substringToIndex(self.characters.count - count)
     }
     func replacingOccurrencesOfString(target: String, withString: String) -> String{
         return (self as NSString).stringByReplacingOccurrencesOfString(target, withString: withString)
     }
+    // 去掉 字符串中的 Optional
     func trimOptional() -> String {
         guard self.rangeOfString("Optional(")?.count == nil else {
-            
             return self.replacingOccurrencesOfString("Optional(", withString: "").replacingOccurrencesOfString(")", withString: "")
         }
         guard self.rangeOfString("Optional<")?.count == nil else {

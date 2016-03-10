@@ -9,11 +9,12 @@
 import Foundation
 
 extension NSObject {
+    // 运行时 关联的 key 名
     private struct AssociatedKeys {
         static var tableNameKey = "tableNameKey"
         static var createTableSqlKey = "createTableSqlKey"
     }
-    // 绑定一个属性，用于建表使用
+    // 运行时 关联 建表语句的 属性
     var createTableSql: String? {
         get {
             return objc_getAssociatedObject(self, &AssociatedKeys.createTableSqlKey) as? String
@@ -24,7 +25,7 @@ extension NSObject {
             }
         }
     }
-    // 绑定一个属性，传递表名
+    // 运行时关联 表明的属性
     var tableName: String? {
         get {
             return objc_getAssociatedObject(self, &AssociatedKeys.tableNameKey) as? String
@@ -35,13 +36,13 @@ extension NSObject {
             }
         }
     }
-    // 实例化 FMDBOperator
     var dbOperator: FMDBOperator {
         let db = FMDBOperator.sharedInstance
         db.f_tableName = tableName
         db.f_createTable(createTableSql!)
         return db
     }
+    // MARK: 插入数据库 操作
     func insert(any:AnyObject? = nil) -> Bool {
         if let a = any {
             return dbOperator.f_insert(a)
@@ -49,15 +50,19 @@ extension NSObject {
             return dbOperator.f_insert(self)
         }
     }
+    // MARK: 删除 操作
     func remove(id: Int? = nil) -> Bool {
         return dbOperator.f_remove(id)
     }
+    // MARK: 更新 操作
     func save(dict:[String: AnyObject]) -> Bool {
         return dbOperator.f_save(dict)
     }
+    // MARK: 查询操作
     func find(items: Int? = nil) -> AnyObject? {
         return dbOperator.f_find(items)
     }
+    // MARK: 根据条件查询
     func condition(whereStr: String) -> NSObject {
         dbOperator.f_condition(whereStr)
         return self
